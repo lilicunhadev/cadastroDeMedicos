@@ -13,6 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Lista todos os médicos
+Route::get('/medicos', 'MedicoController@all');
+
+// Mostra as informações de um médico
+Route::get('/medico/{id}', 'MedicoController@one');
+
+// Insere um novo médico
+Route::post('/medico', 'MedicoController@new');
+
+// Atualiza a informação de um médico
+Route::put('/medico/{id}', 'MedicoController@edit');
+
+// Exclui um médico
+Route::delete('/medico/{id}', 'MedicoController@delete');
+
+
