@@ -9,60 +9,54 @@
 <body>
     <header>
         <h1>Listagem de Médicos</h1>
-
-        <h3>
-            <a href="{{ route('medicos.create') }}" class="btn btn-sm btn-success">
-            Novo Médico
-            </a>  
-	    </h3>
     </header>
     <hr/>
-    <section>
+  
         
     <div class="card">
   	<div class="box">
     	<div class="box-header">
      		<div class="card-body">
 
+        <center>
 				<form action="{{ route('search') }}" method="POST" class="form form-inline" role="search">
 					@csrf
-					<label class="procurar">Procurar por:</label>
-					<div class="col-3">
+					<label class="procurar">Procurar por: </label>
 						<input type="text" name="nome" class="form-control upper" placeholder="">
-					</div>
-					<label>Filtro:&nbsp;&nbsp;</label>
-					<div class="form-group col-3">
+					<label>Filtro:</label>
 						<select name="busca" class="form-control">
 						<option value="nome">NOME</option>
 						<option value="crm">CRM</option>
 						<option value="especialidade1">ESPECIALIDADE</option>
 					</select>
-					</div>
-					<div class="col-3">
-						<button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>&nbsp;&nbsp; <strong>Pesquisar</strong></button>
-					</div>
+						<button type="submit" class="btn btn-primary"><i class="fas fa-search"></i><strong>Pesquisar</strong></button>
 				</form>
-
+</center>
 			</div>
   		</div>
 	</div>
 
 	<div class="card-body">
 	@if(count($medicos)<1) <div class="alert alert-dismissable alert-warning">
+            <center>
+            </br>
             <i class="ti ti-alert"></i>
             <strong>Aten&ccedil;&atilde;o:</strong> Nenhum médico encontrado!
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             </p>
+            </center>
 	@else
 
     <br/><br/>
-		<table style="border:1px solid black">
+
+    <center>
+		<table border=1>
 			<thead>
                 <tr>
-                      <th>Nome</th>
+                      <th>NOME</th>
                       <th>CRM</th>
                       <th>
-                        <nobr>Ações</nobr>
+                        <nobr>AÇÕES</nobr>
                       </th>
                 </tr>
             </thead>
@@ -79,11 +73,15 @@
                       <td>{{$medico->crm}}</td>
                       <td>
                         <nobr>
-                          <a href="{{ route('medicos.show',$medico->id) }}" 
-                            class="btn btn-sm btn-primary">Selecionar</a>
+                          <button class="btn btn-sm btn-primary">
+                            <a href="{{ route('medicos.show',$medico->id) }}" 
+                              class="btn btn-sm btn-primary" style="text-decoration:none">Selecionar</a>
+                          </button>
 
-                          <a href="{{ route('medicos.edit', ['medico'=>$medico->id]) }}" 
-                            class="btn btn-sm btn-info">Editar</a>
+                          <button class="btn btn-sm btn-info">
+                            <a href="{{ route('medicos.edit', ['medico'=>$medico->id]) }}" 
+                            class="btn btn-sm btn-info" style="text-decoration:none">Editar</a>
+                          </button>
 
                           <form class="d-inline" method="POST" 
                               action="{{ route('medicos.destroy', $medico->id) }}" 
@@ -99,16 +97,23 @@
                   @endforeach
 
             </tbody>
+    </table>
+</center>
 
-		</table>
-
-		<br/>
         {{ $medicos->links() }}
-	@endif
+  @endif
+  
+    <h3>
+      <center><button>
+            <a href="{{ route('medicos.create') }}" class="btn btn-sm btn-success" style="text-decoration:none">
+            Novo Médico
+            </a>
+      </center></button>
+    </h3>
+       
     </div>
 
 
-    </section>
     <hr/>
     <footer>
         CRUD Médicos

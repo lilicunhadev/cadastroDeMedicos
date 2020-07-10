@@ -13,7 +13,9 @@
 		&nbsp;&nbsp;
         <a href="{{ route('medicos.edit', ['medico' => $medico->id]) }}"
              class="btn btn-sm btn-success">
-	  	Editar Médico
+        <button class="btn btn-sm btn-info">  
+             Editar Médico
+        </button>
 	</a>  
 	</h1>
     </header>
