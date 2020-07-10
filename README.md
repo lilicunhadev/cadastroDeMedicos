@@ -24,7 +24,7 @@
 * E nele pode inserir um novo médico, listá-los, alterá-los ou excluí-los.
 
 --------------------------------------------------------------------------------------
-<h4>Testando API</h4>
+<h4>Testando a API</h4>
 
 * Para testar a API criada você pode usar o programa Postman.
 * Para listar todos os médicos: **http://URL_da_aplicacao/api/medicos**, método **GET**
