@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+
+// API DE CADASTRO DE MÉDICOS
 // Lista todos os médicos
 Route::get('/medicos', 'MedicoController@all');
 
