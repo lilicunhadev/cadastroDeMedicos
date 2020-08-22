@@ -48,9 +48,8 @@ class MedController extends Controller
         return redirect()->route('medicos.index');
     }
 
-    public function destroy($id)
+    public function destroy(Medico $medico)
     {
-        $medico = Medico::find($id);
         $medico->delete();
 
         return redirect()->route('medicos.index');
