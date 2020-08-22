@@ -41,30 +41,9 @@ class MedController extends Controller
         return view('medicos.edit', compact('medico'));
     }
 
-    public function update(Request $request, $id)
+    public function update(MedicoRequest $request, Medico $medico)
     {
-        $medico = Medico::find($id);
-
-        if ($medico) {
-
-            $data = $request->only([
-                'nome',
-                'crm',
-                'telefone',
-                'especialidade1',
-                'especialidade2',
-                'especialidade3'
-            ]);
-
-            $medico->nome = $data['nome'];
-            $medico->crm = $data['crm'];
-            $medico->telefone = $data['telefone'];
-            $medico->especialidade1 = $data['especialidade1'];
-            $medico->especialidade2 = $data['especialidade2'];
-            $medico->especialidade3 = $data['especialidade3'];
-
-            $medico -> save();
-        }
+        $medico->fill($request->validated())->save();
 
         return redirect()->route('medicos.index');
     }
