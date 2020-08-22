@@ -16,9 +16,7 @@ class MedController extends Controller
     public function index() {
         $medicos = Medico::paginate(8);
 
-        return view('medicos.index', [
-            'medicos' => $medicos
-        ]);
+        return view('medicos.index', compact('medicos'));
     }
 
     public function create()
