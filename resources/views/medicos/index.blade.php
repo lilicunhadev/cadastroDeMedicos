@@ -19,12 +19,11 @@
      		<div class="card-body">
 
         <center>
-				<form action="{{ route('search') }}" method="POST" class="form form-inline" role="search">
-					@csrf
+                        <form action="{{ route('medicos.index') }}" method="get" class="form form-inline" role="search">
 					<label class="procurar">Procurar por: </label>
-						<input type="text" name="nome" class="form-control upper" placeholder="">
+                            <input type="text" name="search" class="form-control upper" placeholder="">
 					<label>Filtro:</label>
-						<select name="busca" class="form-control">
+                            <select name="filter" class="form-control">
 						<option value="nome">NOME</option>
 						<option value="crm">CRM</option>
 						<option value="especialidade1">ESPECIALIDADE</option>
@@ -100,7 +99,7 @@
     </table>
 </center>
 
-        {{ $medicos->links() }}
+                        {{ $medicos->appends(['filter' => request()->query('filter'), 'search' => request()->query('search')])->links() }}
   @endif
   
     <h3>

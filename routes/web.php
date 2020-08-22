@@ -6,5 +6,3 @@ Route::get('/', function() {
 
 Route::resource('/medicos', 'MedController');
 
-Route::any('/search', 'MedController@search')->name('search');
-

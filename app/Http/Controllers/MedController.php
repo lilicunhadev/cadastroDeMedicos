@@ -13,8 +13,9 @@ use Input;
 
 class MedController extends Controller
 {
-    public function index() {
-        $medicos = Medico::paginate(8);
+    public function index(Request $request)
+    {
+        $medicos = Medico::searchFilter($request->query('filter'), $request->query('search'))->paginate(8);
 
         return view('medicos.index', compact('medicos'));
     }
@@ -54,35 +55,4 @@ class MedController extends Controller
 
         return redirect()->route('medicos.index');
     }
-
-    public function search(Request $request)
-    {
-        if ($request->input('busca', 'nome'))
-        {
-            $busca = $request->input('busca', 'nome');
-            $medicos = Medico::where($request->busca, 'like',  '%' . $request->nome .'%')
-                ->orderBy($busca)
-                ->paginate(8);
-        }
-
-        else if ($request->input('busca', 'crm'))
-        {
-            $busca = $request->input('busca', 'crm');
-            $medicos = Medico::where($request->busca, 'like',  '%' . $request->crm .'%')
-                ->orderBy($busca)
-                ->paginate(8);
-        }
-
-        else if ($request->input('busca', 'especialidade1'))
-        {
-            $busca = $request->input('busca', 'especialidade1');
-            $medicos = Medico::where($request->busca, 'like',  '%' . $request->especialidade1 .'%')
-                ->orderBy($busca)
-                ->paginate(8);
-        }
-            
-        return view('medicos.index')
-            ->with('medicos', $medicos);
-    }
-
 }
