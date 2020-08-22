@@ -36,17 +36,9 @@ class MedController extends Controller
         return view('medicos.show', compact('medico'));
     }
 
-    public function edit($id)
+    public function edit(Medico $medico)
     {
-        $medico = Medico::find($id);
-
-        if ($medico) {
-
-            return view ('medicos.edit', [
-                'medico' => $medico
-            ]);
-        }
-        return redirect()->route('medicos.index');
+        return view('medicos.edit', compact('medico'));
     }
 
     public function update(Request $request, $id)
