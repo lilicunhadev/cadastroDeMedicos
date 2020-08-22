@@ -24,12 +24,12 @@ class MedicoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|string|max:50',
-            'crm' => 'required|string|max:10',
-            'telefone' => 'required|string|max:15',
-            'especialidade1' => 'required|string|max:50',
-            'especialidade2' => 'required|string|max:50',
-            'especialidade3' => 'string|max:50'
+            'nome'           => ['required', 'string', 'max:50'],
+            'crm'            => ['required', 'string', 'max:10'],
+            'telefone'       => ['required', 'string', 'max:15'],
+            'especialidade1' => ['required', 'string', 'max:50'],
+            'especialidade2' => ['required', 'string', 'max:50'],
+            'especialidade3' => ['string', 'max:50'],
         ];
     }
 }

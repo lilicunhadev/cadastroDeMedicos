@@ -26,18 +26,7 @@ class MedController extends Controller
 
     public function store(MedicoRequest $request)
     {
-        $request->all();
-
-        $medico = new Medico;
-
-        $medico->nome = $request['nome'];
-        $medico->crm = $request['crm'];
-        $medico->telefone = $request['telefone'];
-        $medico->especialidade1 = $request['especialidade1'];
-        $medico->especialidade2 = $request['especialidade2'];
-        $medico->especialidade3 = $request['especialidade3'];
-
-        $medico->save();
+        Medico::create($request->validated());
 
         return redirect()->route('medicos.index');
     }
